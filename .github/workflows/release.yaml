@@ -1,0 +1,18 @@
+name: Release
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: xc2/ghwf/.github/workflows/pnpm-artifact.yaml@main
+    with:
+      script: deploy
+      artifact: "*.tgz"
+
+  deploy:
+    runs-on: ubuntu-latest
+    environment: demo
+    steps:
+      - uses: actions/download-artifact@v4
+      - run: |
+          ls -all artifact

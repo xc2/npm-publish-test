@@ -5,11 +5,12 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "files": ["dist", "*.md"],
-  "packageManager": "pnpm@9.1.0",
+  "packageManager": "pnpm@9.4.0",
   "scripts": {
     "build": "modern build",
     "build:watch": "modern build -w",
-    "prepublishOnly": "modern build"
+    "prepack": "modern build",
+    "deploy": "npm pack"
   },
   "devDependencies": {
     "@modern-js/module-tools": "2.49.2",
