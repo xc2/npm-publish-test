@@ -7,12 +7,22 @@ jobs:
     uses: xc2/ghwf/.github/workflows/pnpm-artifact.yaml@main
     with:
       script: deploy
-      artifact: "*.tgz"
+      artifact-path: "*.tgz"
+      artifact-name: pkg
 
-  deploy:
+  update-release:
     runs-on: ubuntu-latest
     environment: demo
+    needs: build
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: xc2/ghwf/restore-pnpm-artifact@main
+        with:
+          cache-key: ${{ needs.build.outputs.cache-key }}
+          cache-path: ${{ needs.build.outputs.cache-path }}
       - run: |
-          ls -all artifact
+          ls -all ${{ needs.build.outputs.cache-path }}
+      - name: Update Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: ${{ needs.build.outputs.cache-path }}
