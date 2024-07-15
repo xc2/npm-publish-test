@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: demo
     needs: build
+    permissions:
+      contents: write
     steps:
       - uses: xc2/ghwf/restore-pnpm-artifact@main
         with:
