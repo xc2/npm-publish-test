@@ -1,0 +1,12 @@
+name: "NPM Publish"
+description: "NPM Publish"
+inputs:
+  name:
+    description: "Package name"
+    required: false
+  version:
+    description: "Package version"
+    required: false
+runs:
+  using: "node20"
+  main: "dist/index.js"
