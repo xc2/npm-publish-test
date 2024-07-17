@@ -28,9 +28,10 @@ jobs:
         with:
           cache-key: ${{ needs.build.outputs.cache-key }}
           cache-path: ${{ needs.build.outputs.cache-path }}
-      - uses: xc2/ghwf/npm-publish@npm-publish
+      - uses: ./.github/npm-publish
         with:
           version: ${{ inputs.publish-version }}
           name: ${{ inputs.publish-name }}
+          tarball: ${{ needs.build.outputs.cache-path }}
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
