@@ -25,6 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: npm-stable
     needs: build
+    permissions:
+      id-token: write
     steps:
       - uses: xc2/ghwf/pnpm-artifact/restore@npm-publish
         with:
