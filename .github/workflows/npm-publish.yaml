@@ -6,10 +6,12 @@ on:
         description: 'Package version'
         required: false
         type: string
+        default: "0.0.1-beta.1"
       publish-name:
         description: 'Package name'
         required: false
         type: string
+        default: "@109cafe/play-npm-publish"
 
 jobs:
   build:
@@ -33,5 +35,4 @@ jobs:
           version: ${{ inputs.publish-version }}
           name: ${{ inputs.publish-name }}
           tarball: ${{ needs.build.outputs.cache-path }}
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          token: ${{ secrets.NPM_TOKEN }}
