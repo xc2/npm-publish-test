@@ -4,9 +4,8 @@ on:
     inputs:
       publish-version:
         description: 'Package version'
-        required: true
+        required: false
         type: string
-        default: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || format('0.0.0-{0}', github.ref_name) }}
       publish-name:
         description: 'Package name'
         required: false
