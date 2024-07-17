@@ -28,7 +28,7 @@ jobs:
         with:
           cache-key: ${{ needs.build.outputs.cache-key }}
           cache-path: ${{ needs.build.outputs.cache-path }}
-      - uses: ./.github/npm-publish
+      - uses: 109cafe/action-npr@npm-publish
         with:
           version: ${{ inputs.publish-version }}
           name: ${{ inputs.publish-name }}
