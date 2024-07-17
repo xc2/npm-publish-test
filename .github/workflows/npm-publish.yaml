@@ -6,7 +6,6 @@ on:
         description: 'Package version'
         required: false
         type: string
-        default: "0.0.1-beta.1"
       publish-name:
         description: 'Package name'
         required: false
