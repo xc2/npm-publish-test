@@ -15,7 +15,7 @@ jobs:
 
   update-release:
     needs: build
-    uses: xc2/ghwf/.github/workflows/update-release.yaml@npm-publish
+    uses: xc2/ghwf/.github/workflows/update-release.yaml@main
     permissions:
       contents: write
     with:
