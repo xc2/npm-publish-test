@@ -16,6 +16,8 @@ jobs:
   update-release:
     needs: build
     uses: xc2/ghwf/.github/workflows/update-release.yaml@npm-publish
+    permissions:
+      contents: write
     with:
       cache-key: ${{ needs.build.outputs.cache-key }}
       cache-path: ${{ needs.build.outputs.cache-path }}
