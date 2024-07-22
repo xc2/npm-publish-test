@@ -15,9 +15,12 @@ jobs:
 
   update-release:
     needs: build
-    uses: xc2/ghwf/.github/workflows/update-release.yaml@main
+    uses: xc2/ghwf/.github/workflows/update-release.yaml@attest
     permissions:
       contents: write
+      id-token: write
+      attestations: write
     with:
       cache-key: ${{ needs.build.outputs.cache-key }}
       cache-path: ${{ needs.build.outputs.cache-path }}
+      provenance: true
