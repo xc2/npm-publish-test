@@ -27,13 +27,14 @@ jobs:
     permissions:
       id-token: write
     steps:
-      - uses: xc2/ghwf/pnpm-artifact/restore@npm-publish
+      - uses: xc2/ghwf/pnpm-artifact/restore@main
         with:
           cache-key: ${{ needs.build.outputs.cache-key }}
           cache-path: ${{ needs.build.outputs.cache-path }}
-      - uses: 109cafe/action-npr@npm-publish
+      - uses: 109cafe/action-npr@summary
         with:
           version: ${{ inputs.publish-version }}
           name: ${{ inputs.publish-name }}
           tarball: ${{ needs.build.outputs.cache-path }}
           token: ${{ secrets.NPM_TOKEN }}
+          provenance: true
